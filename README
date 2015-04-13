@@ -1,0 +1,34 @@
+                                                            LIBREOFFICE(CALC) + MACRO(BASIC) + UNIX(SHELL SCRIPT)
+- Gera arquivo .XLS em .TXT (Layout ASIA para importação Financeiro).
+
+
+-#-Dependências:
+
+-Windows:
+* Putty -- Instalar para execução do Shell via Macro.
+
+-Linux:
+* Samba --  Cnfigurar samba e ajustar permissões para domínio Samba >> Microsoft conforme sua versão.
+* dos2unix -- para conversão dos arquivos dos2unix e unix2dos.
+
+_______________________________________________________________________________________________________
+-#-Configuração
+
+-Windows:
+
+--Libreoffice Calc:
+* Configurar a macro conforme o arquivo "basic-macro-calc-gera-ricardo.txt" mudando suas necessidades.
+* Em ferramentas >> persinalizar, criar um botão com o nome da chamada e apontando para macro.
+* Mapear unidade de rede para a pasta samba e deixar para montar automaticamente no login.
+* Copiar o Putty para System32 para chamada do script-ricardo.bat.
+
+-Linux
+-- SAMBA
+Configurar samba (Permissões Grupos)
+Configurar arquivo /etc/ssh/ssh_config para ricardo ter acesso.
+Criar pastas auxiliares conforme os scripts ou configurar os scripts conforme a estrtutura da rede.
+
+
+############################################ Ricardo SL########################################################################################################
+
+Este script foi desenvolvido para contabilidade Balan-Set e é utilizado por 48 contadores na geração automática do arquivo de importação financeiro para o sistema ASIA.

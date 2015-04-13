@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Ricardo" > /home/GERADOR/GERADOR/SCRIPT2/quem
+
+cp /home/GERADOR/GERADOR/AGERAR2/financeiro-ricardo.csv /home/GERADOR/GERADOR/SCRIPT2/financeiro-ricardo.csv
+
+cd /home/GERADOR/GERADOR/SCRIPT2/
+
+./gera-ricardo.sh

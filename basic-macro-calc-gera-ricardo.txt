@@ -1,0 +1,43 @@
+sub Salva2
+rem ----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+dim empresa as string
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService("com.sun.star.frame.DispatchHelper")
+rem ----------------------------------------------------------------------
+dim args1(2) as new com.sun.star.beans.PropertyValue
+args1(0).Name = "URL"
+args1(0).Value = "file:///Z:/GERADOR/AGERAR2/financeiro-ricardo.csv"
+args1(1).Name = "FilterName"
+args1(1).Value = "Text - txt - csv (StarCalc)"
+args1(2).Name = "FilterOptions"
+args1(2).Value = "9,0,76,1,,0,false,false"
+
+dispatcher.executeDispatch(document, ".uno:SaveAs", "", 0, args1())
+shell(location &"\\192.168.0.244\GERADOR\GERADOR\PROCESSOS2\script-ricardo.bat")
+MsgBox "Arquivo Financeiro Gerado!"
+
+rem ----------------------------------------------------------------------
+rem define variables
+dim documents   as object
+dim dispatchers as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+documents   = ThisComponent.CurrentController.Frame
+dispatchers = createUnoService("com.sun.star.frame.DispatchHelper")
+
+rem ----------------------------------------------------------------------
+dim args2(1) as new com.sun.star.beans.PropertyValue
+args2(0).Name = "URL"
+args2(0).Value = "file:///C:/Users/ricardo/GERADOR/FINANCEIRO/arquivo-ricardo.xls"
+args2(1).Name = "FilterName"
+args2(1).Value = "MS Excel 97"
+
+dispatchers.executeDispatch(documents, ".uno:SaveAs", "", 0, args2())
+
+shell(location &"notepad.exe \\192.168.0.244\GERADOR\GERADOR\GERADOS2\Ricardo.ASIA.txt")
+end sub
