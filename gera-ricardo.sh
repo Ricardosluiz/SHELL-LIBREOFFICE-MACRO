@@ -15,11 +15,11 @@ sed -i '/\t#N\/DISP\t/d' importacao.txt
 cut -f1 importacao.txt > data.tmp
 cut -f2 importacao.txt > historico1.tmp
 cut -f3 importacao.txt > historico2.tmp
-cut -f6 importacao.txt | sed 's/ //g ; s/ //g' > nf.tmp
+cut -f6 importacao.txt | sed 's/ //g' > nf.tmp
 sed -i 's/\//-/g' historico*
 sed -i '/^$/!s/^/NF /' nf.tmp
 paste -d " " historico1.tmp historico2.tmp nf.tmp > historico.tmp
-sed -i 's/  / /g ; s/  / /g ' historico.tmp
+sed -i 's/  / /g' historico.tmp
 cut -f7 importacao.txt > conta-d.tmp
 cut -f9 importacao.txt > conta-c.tmp
 cut -f8 importacao.txt > valor.tmp
@@ -76,10 +76,9 @@ sed -i 's/$//' datadata.tmp
 sed -i 's/$/                     /' conta-c.tmp
 sed -i 's/$/000000000000.00000000000000.00000000000000.00000000000000.00/' data.tmp
 paste -d "" datadata.tmp conta-d.tmp  valor.tmp conta-c.tmp data.tmp historico.tmp  | iconv -f utf-8 -t iso-8859-1 > $banco.ASIA
-dos2unix $banco.ASIA
 unix2dos $banco.ASIA
 cp $banco.ASIA ../GERADOS2/$banco.ASIA.txt
-rm -f *.tmp 0000-plano.csv  datadata.txt importacao.ASIA  importacao.txt  monta-numeros financeiro.csv
+rm -f *.tmp *.csv  datadata.txt importacao.ASIA  importacao.txt  monta-numeros
 rm -f ../AGERAR2/*ricardo*
 rm -f quem $banco.ASIA
 wc -l ../GERADOS2/$banco.ASIA.txt > ../GERADOS2/$banco-numeros.tmp
